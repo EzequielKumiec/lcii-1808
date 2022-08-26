@@ -27,7 +27,7 @@ where year(fecha) = year(GETDATE())
 
 -------------------------------------------------------------------------------
 --3. Se quiere saber en este negocio, cuánto se factura:
-
+--                   FIJARSE QUE MUESTRA TODAS LAS FECHAS, HABRIA QUE PONER UN WHERE PARA FILTRAR
 -----------------------------------------------------------------------------
 --a. Diariamente
 -----------------------------------------------------------------------------
@@ -76,11 +76,12 @@ order by fecha
 --Ordene por la cantidad de facturas en forma descendente y fecha.
 -----------------------------------------------------------------------------
 
-select distinct convert(char,f.fecha,103) 'Fecha',
+select convert(char,f.fecha,103) 'Fecha',
 	   count(df.nro_factura) cuantos
 from facturas f
 	join detalle_facturas df on f.nro_factura =df.nro_factura
-where month(f.fecha) not in (1,6,12)
+where month(f.fecha) not in (1,7,12)
+	  and year(fecha) = 2021
 group by f.nro_factura,f.fecha
 order by cuantos desc, fecha asc
 -----------------------------------------------------------------------------
