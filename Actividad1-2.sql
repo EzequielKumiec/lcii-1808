@@ -1,7 +1,7 @@
 ---------------------------------ACTIVIDAD 1.2---------------------------------
 
 -------------------------------------------------------------------------------
---7. Se quiere saber la cantidad de ventas que hizo el vendedor de código 3.
+--7. Se quiere saber la cantidad de ventas que hizo el vendedor de cÃ³digo 3.
 -------------------------------------------------------------------------------
 
 select count(*)
@@ -12,7 +12,7 @@ where v.cod_vendedor = 3
 
 
 -------------------------------------------------------------------------------
---8. ¿Cuál fue la fecha de la primera y última venta que se realizó en este
+--8. Â¿CuÃ¡l fue la fecha de la primera y Ãºltima venta que se realizÃ³ en este
 --negocio?
 -------------------------------------------------------------------------------
 
@@ -22,8 +22,8 @@ from facturas
 
 
 -------------------------------------------------------------------------------
---9. Mostrar la siguiente información respecto a la factura nro.: 450: cantidad
---total de unidades vendidas, la cantidad de artículos diferentes vendidos y
+--9. Mostrar la siguiente informaciÃ³n respecto a la factura nro.: 450: cantidad
+--total de unidades vendidas, la cantidad de artÃ­culos diferentes vendidos y
 --el importe total.
 -------------------------------------------------------------------------------
 
@@ -35,9 +35,9 @@ from detalle_facturas df
 where f.nro_factura = 450
 
 -------------------------------------------------------------------------------
---10.¿Cuál fue la cantidad total de unidades vendidas, importe total y el
+--10.Â¿CuÃ¡l fue la cantidad total de unidades vendidas, importe total y el
 --importe promedio para vendedores cuyos nombres comienzan con letras
---que van de la “d” a la “l”?
+--que van de la â€œdâ€ a la â€œlâ€?
 -------------------------------------------------------------------------------
 
 select count(cantidad) 'Cantidad total de unidades vendidas',
@@ -49,7 +49,7 @@ where v.nom_vendedor like '[d-l]%'
 
 -------------------------------------------------------------------------------
 --11.Se quiere saber el importe total vendido, el promedio del importe vendido
---y la cantidad total de artículos vendidos para el cliente Roque Paez.
+--y la cantidad total de artÃ­culos vendidos para el cliente Roque Paez.
 -------------------------------------------------------------------------------
 
 select * from clientes
@@ -66,7 +66,7 @@ where nom_cliente like '%Roque%'
 
 -------------------------------------------------------------------------------
 --12.Mostrar la fecha de la primera venta, la cantidad total vendida y el importe
---total vendido para los artículos que empiecen con “C”.
+--total vendido para los artÃ­culos que empiecen con â€œCâ€.
 -------------------------------------------------------------------------------
 
 select convert(char,min(f.fecha),103) 'Primera venta',
@@ -78,7 +78,7 @@ from detalle_facturas df
 where a.descripcion like 'C%' 
 
 -------------------------------------------------------------------------------
---13.Se quiere saber la cantidad total de artículos vendidos y el importe total
+--13.Se quiere saber la cantidad total de artÃ­culos vendidos y el importe total
 --vendido para el periodo del 15/06/2011 al 15/06/2017.
 -------------------------------------------------------------------------------
 
@@ -91,8 +91,8 @@ where f.fecha > 15/06/2011 --and f.fecha <15/06/2017    NO HAY NADA ENTRE ESA FE
 
 
 -------------------------------------------------------------------------------
---14.Se quiere saber la cantidad de veces y la última vez que vino el cliente de
---apellido Abarca y cuánto gastó en total.
+--14.Se quiere saber la cantidad de veces y la Ãºltima vez que vino el cliente de
+--apellido Abarca y cuÃ¡nto gastÃ³ en total.
 -------------------------------------------------------------------------------
 
 select count(c.cod_cliente) 'Cantidad de veces que vino',
@@ -105,7 +105,7 @@ where c.ape_cliente = 'Abarca'
 
 -------------------------------------------------------------------------------
 --15.Mostrar el importe total y el promedio del importe para los clientes cuya
---dirección de mail es conocida.
+--direcciÃ³n de mail es conocida.
 -------------------------------------------------------------------------------
 
 select sum(pre_unitario * cantidad) 'importe total',
@@ -116,8 +116,8 @@ from detalle_facturas df
 where c.[e-mail] is not null
 
 -------------------------------------------------------------------------------
---16.Obtener la siguiente información: el importe total vendido y el importe
---promedio vendido para números de factura que no sean los siguientes:
+--16.Obtener la siguiente informaciÃ³n: el importe total vendido y el importe
+--promedio vendido para nÃºmeros de factura que no sean los siguientes:
 --13, 5, 17, 33, 24
 -------------------------------------------------------------------------------
 select sum(pre_unitario * cantidad) 'importe total',
@@ -125,3 +125,7 @@ select sum(pre_unitario * cantidad) 'importe total',
 from detalle_facturas df
 	join facturas f on f.nro_factura = df.nro_factura
 where f.nro_factura not like '[13,5,17,33,24]'
+
+-----------------------------------------------------------------------------------------
+--                                    Ezek                                             --
+-----------------------------------------------------------------------------------------
