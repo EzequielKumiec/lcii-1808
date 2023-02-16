@@ -1,6 +1,6 @@
---2. Se quiere saber quÈ vendedores y clientes hay en la empresa; para los casos en
---que su telÈfono y direcciÛn de e-mail sean conocidos. Se deber· visualizar el
---cÛdigo, nombre y si se trata de un cliente o de un vendedor. Ordene por la
+--2. Se quiere saber qu√© vendedores y clientes hay en la empresa; para los casos en
+--que su tel√©fono y direcci√≥n de e-mail sean conocidos. Se deber√° visualizar el
+--c√≥digo, nombre y si se trata de un cliente o de un vendedor. Ordene por la
 --columna tercera y segunda.
 
 select cod_cliente Codigo, ape_cliente + ', ' + nom_cliente Nombre, 'Cliente' Tipo
@@ -23,7 +23,7 @@ order by 3, 2
 
 ---------------------------------------------------------------------------------------
 
---3. Emitir un listado donde se muestren quÈ artÌculos, clientes y vendedores hay en
+--3. Emitir un listado donde se muestren qu√© art√≠culos, clientes y vendedores hay en
 --la empresa. Determine los campos a mostrar y su ordenamiento.
 
 select cod_cliente Codigo, ape_cliente + ', ' + nom_cliente Nombre, 'Cliente' Tipo
@@ -39,10 +39,10 @@ order by 1, 2
 ---------------------------------------------------------------------------------------
 
 --4. Se quiere saber las direcciones (incluido el barrio) tanto de clientes como de
---vendedores. Para el caso de los vendedores, cÛdigos entre 3 y 12. En ambos
---casos las direcciones deber·n ser conocidas. Rotule como NOMBRE,
---DIRECCION, BARRIO, INTEGRANTE (en donde indicar· si es cliente o vendedor).
---Ordenado por la primera y la ˙ltima columna.
+--vendedores. Para el caso de los vendedores, c√≥digos entre 3 y 12. En ambos
+--casos las direcciones deber√°n ser conocidas. Rotule como NOMBRE,
+--DIRECCION, BARRIO, INTEGRANTE (en donde indicar√° si es cliente o vendedor).
+--Ordenado por la primera y la √∫ltima columna.
 
 select cod_cliente Codigo, ape_cliente + ', ' + nom_cliente Nombre, calle + SPACE(1)+LTRIM(str(altura)) 'Direccion', b.barrio Barrio, 'Cliente' Integrante
 from clientes c join
@@ -57,8 +57,8 @@ order by 1, 4
 
 -----------------------------------------------------------------------------------------
 
---5. Õdem al ejercicio anterior, sÛlo que adem·s del cÛdigo, identifique de donde
---obtiene la informaciÛn (de quÈ tabla se obtienen los datos).
+--5. √çdem al ejercicio anterior, s√≥lo que adem√°s del c√≥digo, identifique de donde
+--obtiene la informaci√≥n (de qu√© tabla se obtienen los datos).
 
 select cod_cliente Codigo, 'Tabla Cliente' Informacion ,ape_cliente + ', ' + nom_cliente Nombre, calle + SPACE(1)+LTRIM(str(altura)) 'Direccion', b.barrio Barrio, 'Cliente' Integrante
 from clientes c join
@@ -73,9 +73,9 @@ order by 1, 4
 
 -----------------------------------------------------------------------------------------
 
---6. Listar todos los artÌculos que est·n a la venta cuyo precio unitario oscile entre 10
---y 50; tambiÈn se quieren listar los artÌculos que fueron comprados por los
---clientes cuyos apellidos comiencen con ìMî o con ìPî.
+--6. Listar todos los art√≠culos que est√°n a la venta cuyo precio unitario oscile entre 10
+--y 50; tambi√©n se quieren listar los art√≠culos que fueron comprados por los
+--clientes cuyos apellidos comiencen con ‚ÄúM‚Äù o con ‚ÄúP‚Äù.
 
 --PUEDE QUE ESTE MAL JE
 select descripcion Articulo, a.pre_unitario Precio, c.nom_cliente + ', ' + c.ape_cliente Cliente
@@ -104,8 +104,8 @@ WHERE a.pre_unitario between 100 and 150
 
 
 -----------------------------------------------------------------------------------------
---7. El encargado del negocio quiere saber cu·nto fue la facturaciÛn del aÒo pasado.
---Por otro lado, cu·nto es la facturaciÛn del mes pasado, la de este mes y la de
+--7. El encargado del negocio quiere saber cu√°nto fue la facturaci√≥n del a√±o pasado.
+--Por otro lado, cu√°nto es la facturaci√≥n del mes pasado, la de este mes y la de
 --hoy (Cada pedido en una consulta distinta, y puede unirla en una sola tabla de
 --resultado)
 
@@ -117,3 +117,7 @@ where YEAR(fecha) = YEAR(GETDATE())-1 or
 	  YEAR(fecha) = YEAR(GETDATE()) and MONTH(fecha) = MONTH(GETDATE()) or
 	  YEAR(fecha) = YEAR(GETDATE()) and day(fecha) = day(GETDATE()) 
 group by fecha
+
+-----------------------------------------------------------------------------------------
+--                                    Ezek                                             --
+-----------------------------------------------------------------------------------------
