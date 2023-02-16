@@ -1,9 +1,9 @@
 ---------------------------------ACTIVIDAD 1.3---------------------------------
 
---2. Por cada factura emitida mostrar la cantidad total de artÌculos vendidos
---(suma de las cantidades vendidas), la cantidad Ìtems que tiene cada
+--2. Por cada factura emitida mostrar la cantidad total de art√≠culos vendidos
+--(suma de las cantidades vendidas), la cantidad √≠tems que tiene cada
 --factura en el detalle (cantidad de registros de detalles) y el Importe total
---de la facturaciÛn de este aÒo.
+--de la facturaci√≥n de este a√±o.
 -------------------------------------------------------------------------------
 
 select f.nro_factura 'Numero Factura',
@@ -26,7 +26,7 @@ from facturas f
 where year(fecha) = year(GETDATE()) 
 
 -------------------------------------------------------------------------------
---3. Se quiere saber en este negocio, cu·nto se factura:
+--3. Se quiere saber en este negocio, cu√°nto se factura:
 --                   FIJARSE QUE MUESTRA TODAS LAS FECHAS, HABRIA QUE PONER UN WHERE PARA FILTRAR
 -----------------------------------------------------------------------------
 --a. Diariamente
@@ -41,7 +41,7 @@ group by fecha
 --b. Mensualmente
 ------------------------Con Nombre-------------------------------------------
 
-select YEAR(fecha) AS AÒo, 
+select YEAR(fecha) AS A√±o, 
 	   DATENAME(MONTH, MAX(fecha)) AS Mes,
 	   sum(cantidad * pre_unitario) 'Se factura'
 from facturas f
@@ -49,11 +49,11 @@ from facturas f
 group by
 		year(fecha),
 		month(fecha)
-order by AÒo,Mes
+order by A√±o,Mes
 
 -------------------------Sin Nombre------------------------------------------
 
-select YEAR(fecha) AS AÒo, 
+select YEAR(fecha) AS A√±o, 
 	   month(MAX(fecha)) AS Mes,
 	   sum(cantidad * pre_unitario) 'Se factura'
 from facturas f
@@ -61,7 +61,7 @@ from facturas f
 group by
 		year(fecha),
 		month(fecha)
-order by AÒo,Mes
+order by A√±o,Mes
 
 -----------------------------------------------------------------------------
 --c. Anualmente
@@ -86,7 +86,7 @@ group by f.nro_factura,f.fecha
 order by cuantos desc, fecha asc
 -----------------------------------------------------------------------------
 --5. Se quiere saber la cantidad y el importe promedio vendido por fecha y
---cliente, para cÛdigos de vendedor superiores a 2. Ordene por fecha y
+--cliente, para c√≥digos de vendedor superiores a 2. Ordene por fecha y
 --cliente.
 -----------------------------------------------------------------------------
 
@@ -105,8 +105,8 @@ group by nom_vendedor, ape_vendedor, f.fecha, nom_cliente,ape_cliente, cantidad
 order by Fecha, Cliente
 -----------------------------------------------------------------------------
 --6. Se quiere saber el importe promedio vendido y la cantidad total vendida
---por fecha y artÌculo, para cÛdigos de cliente inferior a 3. Ordene por fecha
---y artÌculo.
+--por fecha y art√≠culo, para c√≥digos de cliente inferior a 3. Ordene por fecha
+--y art√≠culo.
 -----------------------------------------------------------------------------
 
 select avg(df.pre_unitario*cantidad) 'Importe promedio',
@@ -122,7 +122,7 @@ group by fecha,descripcion
 
 -----------------------------------------------------------------------------
 --7. Listar la cantidad total vendida, el importe total vendido y el importe
---promedio total vendido por n˙mero de factura, siempre que la fecha no
+--promedio total vendido por n√∫mero de factura, siempre que la fecha no
 --oscile entre el 13/2/2007 y el 13/7/2010.
 -----------------------------------------------------------------------------
 
@@ -135,9 +135,9 @@ from facturas f
 where fecha not between 13/2/2007 and 13/7/2010
 group by fecha
 -----------------------------------------------------------------------------
---8. Emitir un reporte que muestre la fecha de la primer y ˙ltima venta y el
+--8. Emitir un reporte que muestre la fecha de la primer y √∫ltima venta y el
 --importe comprado por cliente. Rotule como CLIENTE, PRIMER VENTA,
---⁄LTIMA VENTA, IMPORTE.
+--√öLTIMA VENTA, IMPORTE.
 -----------------------------------------------------------------------------
 
 select c.nom_cliente + ', ' +  c.ape_cliente 'Clientes',
@@ -151,9 +151,9 @@ from facturas f
 GROUP BY c.nom_cliente + ', ' + c.ape_cliente, fecha
 -----------------------------------------------------------------------------
 --9. Se quiere saber el importe total vendido, la cantidad total vendida y el
---precio unitario promedio por cliente y artÌculo, siempre que el nombre del
---cliente comience con letras que van de la ìaî a la ìmî. Ordene por cliente,
---precio unitario promedio en forma descendente y artÌculo. Rotule como
+--precio unitario promedio por cliente y art√≠culo, siempre que el nombre del
+--cliente comience con letras que van de la ‚Äúa‚Äù a la ‚Äúm‚Äù. Ordene por cliente,
+--precio unitario promedio en forma descendente y art√≠culo. Rotule como
 --IMPORTE TOTAL, CANTIDAD TOTAL, PRECIO PROMEDIO.
 -----------------------------------------------------------------------------
 
@@ -172,8 +172,8 @@ order by 1,4 desc
 
 
 -----------------------------------------------------------------------------
---10.Se quiere saber la cantidad de facturas y la fecha la primer y ˙ltima
---factura por vendedor y cliente, para n˙meros de factura que oscilan entre
+--10.Se quiere saber la cantidad de facturas y la fecha la primer y √∫ltima
+--factura por vendedor y cliente, para n√∫meros de factura que oscilan entre
 --5 y 30. Ordene por vendedor, cantidad de ventas en forma descendente y
 --cliente.
 --------------------------------------------------------------------------------
@@ -223,3 +223,6 @@ where year(fecha) = year(getdate())
 group by v.nom_vendedor + ', '+ v.nom_vendedor
 having sum(pre_unitario*cantidad)<135000
 
+-----------------------------------------------------------------------------------------
+--                                    Ezek                                             --
+-----------------------------------------------------------------------------------------
