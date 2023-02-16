@@ -4,8 +4,8 @@
 --                                                                              --
 ----------------------------------------------------------------------------------
 
---1. Se solicita un listado de artÌculos cuyo precio es inferior al promedio de
---precios de todos los artÌculos. (est· resuelto en el material teÛrico)
+--1. Se solicita un listado de art√≠culos cuyo precio es inferior al promedio de
+--precios de todos los art√≠culos. (est√° resuelto en el material te√≥rico)
 ----------------------------------------------------------------------------------
 
 select cod_articulo 'Articulos', descripcion, pre_unitario
@@ -13,8 +13,8 @@ from articulos
 where pre_unitario<(select avg(pre_unitario) from articulos)
 
 ----------------------------------------------------------------------------------
---2. Emitir un listado de los artÌculos que no fueron vendidos este aÒo. En ese
---listado solo incluir aquellos cuyo precio unitario del artÌculo oscile entre
+--2. Emitir un listado de los art√≠culos que no fueron vendidos este a√±o. En ese
+--listado solo incluir aquellos cuyo precio unitario del art√≠culo oscile entre
 --50 y 100.
 ----------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ select a.cod_articulo 'Codigo de Articulo', a.descripcion 'Articulo', a.pre_unit
 from articulos a 
 where a.cod_articulo not in (select df.cod_articulo from detalle_facturas df join facturas f on f.nro_factura = df.nro_factura WHERE YEAR(fecha) = YEAR(GETDATE()))
 ----------------------------------------------------------------------------------
---3. Genere un reporte con los clientes que vinieron m·s de 10 veces el aÒo
+--3. Genere un reporte con los clientes que vinieron m√°s de 10 veces el a√±o
 --pasado.
 ----------------------------------------------------------------------------------
 						--ver cuantas veces vinieron 
@@ -58,7 +58,7 @@ where c.cod_cliente in (select f.cod_cliente
 					  having count(f.cod_cliente) > 10)
 
 ----------------------------------------------------------------------------------
---4. Se quiere saber quÈ clientes no vinieron entre el 12/12/2015 y el 13/7/2020
+--4. Se quiere saber qu√© clientes no vinieron entre el 12/12/2015 y el 13/7/2020
 ----------------------------------------------------------------------------------
 
 --no salia ninguno no se por q
@@ -83,7 +83,7 @@ where cod_cliente in (select cod_cliente
 						  )
 
 ----------------------------------------------------------------------------------
---6. Mostrar los datos de las facturas para los casos en que por aÒo se hayan
+--6. Mostrar los datos de las facturas para los casos en que por a√±o se hayan
 --hecho menos de 9 facturas. 
 ----------------------------------------------------------------------------------
 
@@ -103,7 +103,7 @@ having count(df.nro_factura) < 9
 
 ----------------------------------------------------------------------------------
 --7. Emitir un reporte con las facturas cuyo importe total haya sido superior a
---1.500 (incluir en el reporte los datos de los artÌculos vendidos y los
+--1.500 (incluir en el reporte los datos de los art√≠culos vendidos y los
 --importes).
 ----------------------------------------------------------------------------------
 
@@ -134,7 +134,7 @@ where YEAR(fecha)=YEAR(GETDATE())
 )
 
 ----------------------------------------------------------------------------------
---8. Se quiere saber quÈ vendedores nunca atendieron a estos clientes: 1 y 6.
+--8. Se quiere saber qu√© vendedores nunca atendieron a estos clientes: 1 y 6.
 --Muestre solamente el nombre del vendedor.
 ----------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ where cod_vendedor in (select f.cod_vendedor
 					   )
 
 ----------------------------------------------------------------------------------
---9. Listar los datos de los artÌculos que superaron el promedio del Importe de
+--9. Listar los datos de los art√≠culos que superaron el promedio del Importe de
 --ventas de $ 1.000.
 ----------------------------------------------------------------------------------
 
@@ -154,9 +154,9 @@ where cod_vendedor in (select f.cod_vendedor
 
 
 ----------------------------------------------------------------------------------
---10. øQuÈ artÌculos nunca se vendieron? Tenga adem·s en cuenta que su
---nombre comience con letras que van de la ìdî a la ìpî. Muestre solamente
---la descripciÛn del artÌculo.
+--10. ¬øQu√© art√≠culos nunca se vendieron? Tenga adem√°s en cuenta que su
+--nombre comience con letras que van de la ‚Äúd‚Äù a la ‚Äúp‚Äù. Muestre solamente
+--la descripci√≥n del art√≠culo.
 ----------------------------------------------------------------------------------
 
 select a.cod_articulo,a.descripcion
@@ -167,8 +167,8 @@ where a.cod_articulo not in (select df.cod_articulo
 							 and a.descripcion  like '[d-p]%'
 
 ----------------------------------------------------------------------------------
---11. Listar n˙mero de factura, fecha y cliente para los casos en que ese cliente
---haya sido atendido alguna vez por el vendedor de cÛdigo 3.
+--11. Listar n√∫mero de factura, fecha y cliente para los casos en que ese cliente
+--haya sido atendido alguna vez por el vendedor de c√≥digo 3.
 ----------------------------------------------------------------------------------
 
 select nro_factura,
@@ -181,9 +181,9 @@ where 3 = all (select cod_vendedor
 			   from facturas f
 			   where c.cod_cliente = f.cod_cliente)
 ----------------------------------------------------------------------------------
---12. Listar n˙mero de factura, fecha, artÌculo, cantidad e importe para los
+--12. Listar n√∫mero de factura, fecha, art√≠culo, cantidad e importe para los
 --casos en que todas las cantidades (de unidades vendidas de cada
---artÌculo) de esa factura sean superiores a 40.
+--art√≠culo) de esa factura sean superiores a 40.
 ----------------------------------------------------------------------------------
 
 select f.nro_factura 'Numero factura', 
@@ -199,7 +199,7 @@ where 40 < all (select df.cantidad
 			where df.nro_factura = f.nro_factura)
 group by f.nro_factura, fecha, descripcion, cantidad
 ----------------------------------------------------------------------------------
---13. Emitir un listado que muestre n˙mero de factura, fecha, artÌculo, cantidad
+--13. Emitir un listado que muestre n√∫mero de factura, fecha, art√≠culo, cantidad
 --e importe; para los casos en que la cantidad total de unidades vendidas
 --sean superior a 80.
 ----------------------------------------------------------------------------------
@@ -217,7 +217,7 @@ where 80 < all (select df.cantidad
 			where df.nro_factura = f.nro_factura)
 group by f.nro_factura, fecha, descripcion, cantidad
 ----------------------------------------------------------------------------------
---14. Realizar un listado de n˙mero de factura, fecha, cliente, artÌculo e importe
+--14. Realizar un listado de n√∫mero de factura, fecha, cliente, art√≠culo e importe
 --para los casos en que al menos uno de los importes de esa factura sea
 --menor a 3.000.
 ----------------------------------------------------------------------------------
@@ -234,4 +234,7 @@ where 500> (select sum(df.pre_unitario * cantidad)
 				 from detalle_facturas df
 				 where df.nro_factura = f.nro_factura)
 group by f.nro_factura, fecha, descripcion, cantidad
-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
+--                                    Ezek                                             --
+-----------------------------------------------------------------------------------------
